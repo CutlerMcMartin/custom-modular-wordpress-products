@@ -1,0 +1,43 @@
+.cat-tree-svg-ele {
+    height: 50px;
+    width: 50px;
+}
+
+.cat-tree-svg-arrows {
+    height: 50px;
+    width: 50px;
+}
+
+.cat-tree-arrow-selector-wrapper{
+    margin: 20px;
+}
+
+.horizontal-arrow-selectors{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#left-arrow-selector {
+    transform: rotate(180deg);
+}
+
+#up-arrow-selector {
+    transform: rotate(-90deg);
+}
+
+#down-arrow-selector {
+    transform: rotate(90deg);
+}
+
+.tree-component-options {
+    height: 50px;
+    width: 250px;
+    margin: 10px;
+    padding: 5px;
+    border: black 1px solid;
+}
+
+.individual-component-tree-option {
+    height: 40px;
+    margin: 0 5px;
+}
