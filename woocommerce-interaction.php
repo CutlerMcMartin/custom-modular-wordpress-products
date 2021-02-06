@@ -1,46 +1,46 @@
 <?php
 
 // This adds the 
-function woo_tree_custom_field(){
-    add_meta_box('tree_design_object', 'Tree Design Object', 'woo_tree_designs_meta', 'product', 'normal', "low");
+function woo_mod_prod_custom_field(){
+    add_meta_box('mod_prod_design_object', 'Tree Design Object', 'woo_mod_prod_designs_meta', 'product', 'normal', "low");
 }
   
-function woo_tree_designs_meta() {
+function woo_mod_prod_designs_meta() {
     global $post;
     $custom = get_post_custom($post->ID);
-    $treeDesignJSON = $custom['tree_design_object_ID'][0];
+    $modProdDesignJSON = $custom['mod_prod_design_object_ID'][0];
     ?>
-    <textarea cols='50' rows='1' name='tree_design_object_ID'><?php echo $treeDesignJSON; ?></textarea></p>
+    <textarea cols='50' rows='1' name='mod_prod_design_object_ID'><?php echo $modProdDesignJSON; ?></textarea></p>
     <?php
   }
   
-add_action('admin_init', 'woo_tree_custom_field');
+add_action('admin_init', 'woo_mod_prod_custom_field');
 
-function woo_cat_tree_save_details(){
+function woo_cat_mod_prod_save_details(){
     global $post;
-    update_post_meta($post->ID, 'tree_design_object_ID', $_POST['tree_design_object_ID']);
+    update_post_meta($post->ID, 'mod_prod_design_object_ID', $_POST['mod_prod_design_object_ID']);
 }
 
-add_action('save_post', 'woo_cat_tree_save_details');
+add_action('save_post', 'woo_cat_mod_prod_save_details');
 
 // Adding the custom field for option name to the Rest API
-function add_tree_element_to_json() {
+function add_mod_prod_element_to_json() {
  
     register_rest_field(
         'product', //the post type of your choice
-        'tree_design_object_ID', //the name for your json element
+        'mod_prod_design_object_ID', //the name for your json element
         array(
-            'get_callback'    => 'cat_tree_return_type', //the function that creates the content 
+            'get_callback'    => 'cat_mod_prod_return_type', //the function that creates the content 
         )
     );
 }
 
-add_action( 'rest_api_init', 'add_tree_element_to_json' );
+add_action( 'rest_api_init', 'add_mod_prod_element_to_json' );
  
-function cat_tree_return_type( $object, $field_name, $request ) {
+function cat_mod_prod_return_type( $object, $field_name, $request ) {
     global $post;
-    $tree_design_object_ID = get_post_meta($post->ID, 'tree_design_object_ID', true); 
-    return $tree_design_object_ID; //multiple selections are possible here but in this use case I only want the first one
+    $mod_prod_design_object_ID = get_post_meta($post->ID, 'mod_prod_design_object_ID', true); 
+    return $mod_prod_design_object_ID; //multiple selections are possible here but in this use case I only want the first one
 }
 
 // This function allow multiple products to be added to the cart. Maybe make this into its own plugin

@@ -7,9 +7,9 @@ jQuery(document).ready(function($){
     var post_types = ['basic-post','house-post','wall-post']; // List of allowable posts options
 
     // This is the function that updates the element when a user picks the left or right arrows on screen
-    function updateHorzTreeOption(direction){
+    function updateHorzOption(direction){
         var new_option; // The variable that is going to hold the new element
-        var post_plat_type = platsAndPosts[current_edit_pisition][2]; // This is determing if the elements of the tree are plats or posts. Determined by the current editing position.
+        var post_plat_type = platsAndPosts[current_edit_pisition][2]; // This is determing if the elements of the parent product are plats or posts. Determined by the current editing position.
         var option_element_array; // This holds the options that we could possibly be working with
         // This logic test determines which array we will be working with, posts or plats
         if (post_plat_type == 'plat') {
@@ -33,41 +33,41 @@ jQuery(document).ready(function($){
         }
         platsAndPosts[current_edit_pisition][1] = new_option; // H 
         $('#' + platsAndPosts[current_edit_pisition][0]).attr('option', new_option); // Changing the option attribute on the html element to the new_option
-        $('#' + platsAndPosts[current_edit_pisition][0]).children().attr('src', plugin_href + "/cat-tree-plugin/assets/tree-icons/" + post_plat_type + "s/" + new_option + ".svg"); // A terrible way to create the file path to the .svg file for the element
+        $('#' + platsAndPosts[current_edit_pisition][0]).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + post_plat_type + "s/" + new_option + ".svg"); // A terrible way to create the file path to the .svg file for the element
     }
 
     // Function that populates option box
     function populateOptionBox(position){
-        $(".tree-component-options").empty();
-        component_type = $(".cat-tree-svg-ele[position='" + position + "']").attr('plat_post')
+        $(".mod-prod-component-options").empty();
+        component_type = $(".mod-prod-svg-ele[position='" + position + "']").attr('plat_post')
         if (component_type == 'plat') {
             component_array = plat_types;
         } else if (component_type == 'post') {
             component_array = post_types;
         }
         component_array.forEach(element => {
-            $(".tree-component-options").append("<img class='individual-component-tree-option' option='" + element + "' src='" + plugin_href + "/cat-tree-plugin/assets/tree-icons/" + component_type + "s/" + element + ".svg'>");
+            $(".mod-prod-component-options").append("<img class='individual-component-option' option='" + element + "' src='" + plugin_href + "/mod-prod-plugin/assets/tree-icons/" + component_type + "s/" + element + ".svg'>");
         });
     }
 
     // Running through all the elements that are posts and plats. This is meant to run right as the page starts up
-    $(".cat-tree-svg-ele").each(function(){ 
+    $(".mod-prod-svg-ele").each(function(){ 
         if ($(this).attr('plat_post') == "plat") { // Checking to see if the element is a plat
             if (plat_types.includes($(this).attr('option'))) { // Checking to see if the option is an option that we have
                 platsAndPosts.push([$(this).attr('id'),$(this).attr('option'),$(this).attr('plat_post')]); // Adding the variable to the platsAndPosts array
-                $(this).children().attr('src', plugin_href + "/cat-tree-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/" + $(this).attr('option') + ".svg"); // A terrible way to create the file path to the .svg file for the element
+                $(this).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/" + $(this).attr('option') + ".svg"); // A terrible way to create the file path to the .svg file for the element
             } else { // If the variable that was saved was not an option then force it to be the basic option
                 platsAndPosts.push([$(this).attr('id'),'basic-plat',$(this).attr('plat_post')]); // Adding the variable to the platsAndPosts array
-                $(this).children().attr('src', plugin_href + "/cat-tree-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/basic-plat.svg"); // Setting the source to the basic option
+                $(this).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/basic-plat.svg"); // Setting the source to the basic option
             }
         }
         if ($(this).attr('plat_post') == "post") { // Checking to see if the element is a post
             if (post_types.includes($(this).attr('option'))) { // Checking to see if the option is an option that we have
                 platsAndPosts.push([$(this).attr('id'),$(this).attr('option'),$(this).attr('plat_post')]); // Adding the variable to the platsAndPosts array
-                $(this).children().attr('src', plugin_href + "/cat-tree-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/" + $(this).attr('option') + ".svg"); // A terrible way to create the file path to the .svg file for the element        
+                $(this).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/" + $(this).attr('option') + ".svg"); // A terrible way to create the file path to the .svg file for the element        
             } else { // If the variable that was saved was not an option then force it to be the basic option
                 platsAndPosts.push([$(this).attr('id'),'basic-post',$(this).attr('plat_post')]); // Adding the variable to the platsAndPosts array
-                $(this).children().attr('src', plugin_href + "/cat-tree-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/basic-post.svg"); // Setting the source to the basic option
+                $(this).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/basic-post.svg"); // Setting the source to the basic option
             }
         }
     });
@@ -81,12 +81,12 @@ jQuery(document).ready(function($){
 
     // Switching through the posts or plats options using the left arrow button
     $("#left-arrow-selector").click(function(){
-        updateHorzTreeOption('left');
+        updateHorzOption('left');
     });
 
     // Switching through the posts or plats options using the right arrow button
     $("#right-arrow-selector").click(function(){
-        updateHorzTreeOption('right');
+        updateHorzOption('right');
     });
 
     // Goin up from your position
@@ -105,8 +105,8 @@ jQuery(document).ready(function($){
         populateOptionBox(current_edit_pisition);
     });
     
-    // The button to save the tree
-    $("#submit-tree").click(function(){
+    // The button to save the product config
+    $("#submit-parent-config").click(function(){
         //Take all the variables that are being controlled above and format them into a json variable
         var constructed_json_string = '{'
         platsAndPosts.forEach(element => {
@@ -118,16 +118,16 @@ jQuery(document).ready(function($){
             url: localized_variables.ajaxurl, // Including ajax file
             data: {
                 "action": "ajax_form", // Saying this is an ajax form
-                "tree_json_input":constructed_json_string, // passing in the JSON element that is going to be saved under the tree_json_input column
+                "mod_prod_json_input":constructed_json_string, // passing in the JSON element that is going to be saved under the product
                 'post_id': $(this).attr('post_id')
             },
         });
     });
 
-    // Save the tree and add the tree to the cart
-    $("#buy-tree").click(function(){
+    // Save the product config and add the product config to the cart
+    $("#buy-mod-prod").click(function(){
 
-        // Save the tree
+        // Save the product config
         var constructed_json_string = '{'
         platsAndPosts.forEach(element => {
             constructed_json_string = constructed_json_string + '"' + element[0] + '":"' + element[1] + '",'
@@ -138,7 +138,7 @@ jQuery(document).ready(function($){
             url: localized_variables.ajaxurl, // Including ajax file
             data: {
                 "action": "ajax_form", // Saying this is an ajax form
-                "tree_json_input":constructed_json_string, // passing in the JSON element that is going to be saved under the tree_json_input column
+                "mod_prod_json_input":constructed_json_string, // passing in the JSON element that is going to be saved under the product config_json_input column
                 'post_id': $(this).attr('post_id')
             },
         });
@@ -151,7 +151,7 @@ jQuery(document).ready(function($){
         $.getJSON(site_hrf + '/wp-json/wp/v2/product', function(json_data){
             json_data.forEach(element => {
                 for (let i = 0; i < platsAndPosts.length; i++) {
-                    if (element.tree_design_object_ID == platsAndPosts[i][1]) {
+                    if (element.mod_prod_design_object_ID == platsAndPosts[i][1]) {
                         if (id_url_builder_array.indexOf(element.id) != -1) {
                             quantity_url_builder_array[id_url_builder_array.indexOf(element.id)]++;
                         } else {
@@ -184,18 +184,18 @@ jQuery(document).ready(function($){
     });
 
     // Clicking the element
-    $(".cat-tree-svg-ele").click(function(){
+    $(".mod-prod-svg-ele").click(function(){
         current_edit_pisition = $(this).attr('position');
         populateOptionBox(current_edit_pisition);
     });
 
-    $(".tree-component-options").on("click", ".individual-component-tree-option", function(){
+    $(".mod-prod-component-options").on("click", ".individual-component-option", function(){
         var component_option = $(this).attr('option');
         console.log(current_edit_pisition);
-        var post_plat_type = platsAndPosts[current_edit_pisition][2]; // This is determing if the elements of the tree are plats or posts. Determined by the current editing position.
+        var post_plat_type = platsAndPosts[current_edit_pisition][2]; // This is determing if the elements of the product config are plats or posts. Determined by the current editing position.
         platsAndPosts[current_edit_pisition][1] = component_option;
         $('#' + platsAndPosts[current_edit_pisition][0]).attr('option', component_option); // Changing the option attribute on the html element to the new_option
-        $('#' + platsAndPosts[current_edit_pisition][0]).children().attr('src', plugin_href + "/cat-tree-plugin/assets/tree-icons/" + post_plat_type + "s/" + component_option + ".svg"); // A terrible way to create the file path to the .svg file for the element
+        $('#' + platsAndPosts[current_edit_pisition][0]).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + post_plat_type + "s/" + component_option + ".svg"); // A terrible way to create the file path to the .svg file for the element
     });
 
 });

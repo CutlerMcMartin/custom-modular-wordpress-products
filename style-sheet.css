@@ -1,14 +1,14 @@
-.cat-tree-svg-ele {
+.mod-prod-svg-ele {
     height: 50px;
     width: 50px;
 }
 
-.cat-tree-svg-arrows {
+.mod-prod-svg-arrows {
     height: 50px;
     width: 50px;
 }
 
-.cat-tree-arrow-selector-wrapper{
+.mod-prod-arrow-selector-wrapper{
     margin: 20px;
 }
 
@@ -29,7 +29,7 @@
     transform: rotate(90deg);
 }
 
-.tree-component-options {
+.mod-prod-component-options {
     height: 50px;
     width: 250px;
     margin: 10px;
@@ -37,7 +37,7 @@
     border: black 1px solid;
 }
 
-.individual-component-tree-option {
+.individual-component-mod-prod-option {
     height: 40px;
     margin: 0 5px;
 }
