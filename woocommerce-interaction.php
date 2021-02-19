@@ -2,7 +2,7 @@
 
 // This adds the 
 function woo_mod_prod_custom_field(){
-    add_meta_box('mod_prod_design_object', 'Tree Design Object', 'woo_mod_prod_designs_meta', 'product', 'normal', "low");
+    add_meta_box('mod_prod_design_object', 'Modular Product Object', 'woo_mod_prod_designs_meta', 'product', 'normal', "low");
 }
   
 function woo_mod_prod_designs_meta() {

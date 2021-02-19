@@ -1,11 +1,10 @@
 <?php
 
-//Adds Custom Modular Product Post Type
+//Adds Custom Modular Product Post Type  (This Section Works)
 
-function cat_modular_product_post_type() {
+function modular_product_post_type() {
 
-    //Custom Cat ustom Modular Product Post Type
-
+    //Custom Modular Product Post Type
     register_post_type('mod-prod-design', array(
         'supports' => array('title', 'editor', 'thumbnail'),
         'rewrite' => array('slug' => 'mod-prod-designs'),
@@ -23,10 +22,9 @@ function cat_modular_product_post_type() {
 
 }
 
-add_action('init', 'cat_modular_product_post_type');
+add_action('init', 'modular_product_post_type');
 
 // Add custom field for the JSON string
-
 //Custom Post Field Code from TeamTreeHouse: https://blog.teamtreehouse.com/create-your-first-wordpress-custom-post-type
 
 function modular_product_design_custom_fields(){
