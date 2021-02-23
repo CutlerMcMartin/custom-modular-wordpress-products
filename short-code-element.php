@@ -1,11 +1,11 @@
 <?php
 
 // Making the shortcode and putting out the added html
-function cat_mod_prod_designer_shortcode() {
+function mod_prod_designer_shortcode() {
     
-    if (get_post_custom_values('mod_prod_design_JSON')[0] != null) {
+    if (get_post_custom_values('modular_product_design_JSON')[0] != null) {
         
-    $mod_prod_design_code = json_decode(stripslashes( get_post_custom_values('mod_prod_design_JSON')[0]));
+    $mod_prod_design_code = json_decode(stripslashes( get_post_custom_values('modular_product_design_JSON')[0]));
 
     ?> 
     
@@ -40,7 +40,7 @@ function cat_mod_prod_designer_shortcode() {
 
     </container>
     
-    <p class="yeet">Page Load JSON: <?php echo stripslashes( get_post_custom_values('mod_prod_design_JSON')[0] ) ?> </p>
+    <p class="yeet">Page Load JSON: <?php echo stripslashes( get_post_custom_values('modular_product_design_JSON')[0] ) ?> </p>
     
 
     <?php
@@ -50,7 +50,7 @@ function cat_mod_prod_designer_shortcode() {
 }
 
 function register_shortcodes(){
-    add_shortcode('mod-prod-designer', 'cat_mod_prod_designer_shortcode');
+    add_shortcode('mod-prod-designer', 'mod_prod_designer_shortcode');
 }
 
 add_action( 'init', 'register_shortcodes');
@@ -71,7 +71,7 @@ function ajax_form(){
     $wpdb->update( 
         'wp_postmeta', 
         array('meta_value' => $_POST['mod_prod_json_input']),
-        array('post_ID' => $_POST['post_id'], 'meta_key' => 'mod_prod_design_JSON')
+        array('post_ID' => $_POST['post_id'], 'meta_key' => 'modular_product_design_JSON')
     );
     exit();
 }

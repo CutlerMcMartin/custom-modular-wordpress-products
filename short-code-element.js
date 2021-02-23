@@ -31,9 +31,9 @@ jQuery(document).ready(function($){
                 new_option = option_element_array[option_element_array.indexOf(platsAndPosts[current_edit_pisition][1]) + 1] // Next option to the right
             }
         }
-        platsAndPosts[current_edit_pisition][1] = new_option; // H 
+        platsAndPosts[current_edit_pisition][1] = new_option;
         $('#' + platsAndPosts[current_edit_pisition][0]).attr('option', new_option); // Changing the option attribute on the html element to the new_option
-        $('#' + platsAndPosts[current_edit_pisition][0]).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + post_plat_type + "s/" + new_option + ".svg"); // A terrible way to create the file path to the .svg file for the element
+        $('#' + platsAndPosts[current_edit_pisition][0]).children().attr('src', plugin_href + "/custom-modular-wordpress-products/assets/tree-icons/" + post_plat_type + "s/" + new_option + ".svg"); // A terrible way to create the file path to the .svg file for the element
     }
 
     // Function that populates option box
@@ -46,7 +46,7 @@ jQuery(document).ready(function($){
             component_array = post_types;
         }
         component_array.forEach(element => {
-            $(".mod-prod-component-options").append("<img class='individual-component-option' option='" + element + "' src='" + plugin_href + "/mod-prod-plugin/assets/tree-icons/" + component_type + "s/" + element + ".svg'>");
+            $(".mod-prod-component-options").append("<img class='individual-component-option' option='" + element + "' src='" + plugin_href + "/custom-modular-wordpress-products/assets/tree-icons/" + component_type + "s/" + element + ".svg'>");
         });
     }
 
@@ -55,19 +55,19 @@ jQuery(document).ready(function($){
         if ($(this).attr('plat_post') == "plat") { // Checking to see if the element is a plat
             if (plat_types.includes($(this).attr('option'))) { // Checking to see if the option is an option that we have
                 platsAndPosts.push([$(this).attr('id'),$(this).attr('option'),$(this).attr('plat_post')]); // Adding the variable to the platsAndPosts array
-                $(this).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/" + $(this).attr('option') + ".svg"); // A terrible way to create the file path to the .svg file for the element
+                $(this).children().attr('src', plugin_href + "/custom-modular-wordpress-products/assets/tree-icons/" + $(this).attr('plat_post') + "s/" + $(this).attr('option') + ".svg"); // A terrible way to create the file path to the .svg file for the element
             } else { // If the variable that was saved was not an option then force it to be the basic option
                 platsAndPosts.push([$(this).attr('id'),'basic-plat',$(this).attr('plat_post')]); // Adding the variable to the platsAndPosts array
-                $(this).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/basic-plat.svg"); // Setting the source to the basic option
+                $(this).children().attr('src', plugin_href + "/custom-modular-wordpress-products/assets/tree-icons/" + $(this).attr('plat_post') + "s/basic-plat.svg"); // Setting the source to the basic option
             }
         }
         if ($(this).attr('plat_post') == "post") { // Checking to see if the element is a post
             if (post_types.includes($(this).attr('option'))) { // Checking to see if the option is an option that we have
                 platsAndPosts.push([$(this).attr('id'),$(this).attr('option'),$(this).attr('plat_post')]); // Adding the variable to the platsAndPosts array
-                $(this).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/" + $(this).attr('option') + ".svg"); // A terrible way to create the file path to the .svg file for the element        
+                $(this).children().attr('src', plugin_href + "/custom-modular-wordpress-products/assets/tree-icons/" + $(this).attr('plat_post') + "s/" + $(this).attr('option') + ".svg"); // A terrible way to create the file path to the .svg file for the element        
             } else { // If the variable that was saved was not an option then force it to be the basic option
                 platsAndPosts.push([$(this).attr('id'),'basic-post',$(this).attr('plat_post')]); // Adding the variable to the platsAndPosts array
-                $(this).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + $(this).attr('plat_post') + "s/basic-post.svg"); // Setting the source to the basic option
+                $(this).children().attr('src', plugin_href + "/custom-modular-wordpress-products/assets/tree-icons/" + $(this).attr('plat_post') + "s/basic-post.svg"); // Setting the source to the basic option
             }
         }
     });
@@ -195,7 +195,7 @@ jQuery(document).ready(function($){
         var post_plat_type = platsAndPosts[current_edit_pisition][2]; // This is determing if the elements of the product config are plats or posts. Determined by the current editing position.
         platsAndPosts[current_edit_pisition][1] = component_option;
         $('#' + platsAndPosts[current_edit_pisition][0]).attr('option', component_option); // Changing the option attribute on the html element to the new_option
-        $('#' + platsAndPosts[current_edit_pisition][0]).children().attr('src', plugin_href + "/mod-prod-plugin/assets/tree-icons/" + post_plat_type + "s/" + component_option + ".svg"); // A terrible way to create the file path to the .svg file for the element
+        $('#' + platsAndPosts[current_edit_pisition][0]).children().attr('src', plugin_href + "/custom-modular-wordpress-products/assets/tree-icons/" + post_plat_type + "s/" + component_option + ".svg"); // A terrible way to create the file path to the .svg file for the element
     });
 
 });

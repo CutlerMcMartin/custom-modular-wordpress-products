@@ -24,7 +24,7 @@ function modular_product_post_type() {
 
 add_action('init', 'modular_product_post_type');
 
-// Add custom field for the JSON string
+// Add custom field for the JSON string (This Section Works)
 //Custom Post Field Code from TeamTreeHouse: https://blog.teamtreehouse.com/create-your-first-wordpress-custom-post-type
 
 function modular_product_design_custom_fields(){
