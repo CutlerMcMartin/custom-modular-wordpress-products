@@ -90,10 +90,9 @@ function woocommerce_maybe_add_multiple_products_to_cart() {
         if ( 'simple' !== $add_to_cart_handler ) {
             continue;
         }
-    //         $_REQUEST['quantity'] = ! empty( $id_and_quantity[1] ) ? absint( $id_and_quantity[1] ) : 1;
-    $_REQUEST['quantity'] = ! empty( $quantities[$number] ) ? absint( $quantities[$number] ) : 1;
-        $quantity          = empty( $quantities[$number - 1] ) ? 1 : wc_stock_amount(  $quantities[$number - 1] );
-    //     $quantity          = empty( $_REQUEST['quantity'] ) ? 1 : wc_stock_amount( $_REQUEST['quantity'] );
+        
+        $_REQUEST['quantity'] = ! empty( $quantities[$number] ) ? absint( $quantities[$number] ) : 1;
+        $quantity = empty( $quantities[$number - 1] ) ? 1 : wc_stock_amount(  $quantities[$number - 1] );
         $passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
     
         if ( $passed_validation && false !== WC()->cart->add_to_cart( $product_id, $quantity ) ) {

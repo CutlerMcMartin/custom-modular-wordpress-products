@@ -25,3 +25,4 @@
 require_once plugin_dir_path( __FILE__ ) . 'modular-product-post-type.php';
 require_once plugin_dir_path( __FILE__ ) . 'short-code-element.php';
 require_once plugin_dir_path( __FILE__ ) . 'woocommerce-interaction.php';
+require_once plugin_dir_path( __FILE__ ) . 'modular-combination-managment.php';

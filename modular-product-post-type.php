@@ -17,7 +17,8 @@ function modular_product_post_type() {
             'all_items' => 'All Modular Product Designs',
             'singular_name' => 'Modular Product'
         ),
-        'menu_icon' => 'dashicons-smiley'
+        'menu_icon' => 'dashicons-smiley',
+        'menu_position' => 55
     ));
 
 }
