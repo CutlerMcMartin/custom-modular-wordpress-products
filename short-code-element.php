@@ -11,6 +11,15 @@ function mod_prod_designer_shortcode() {
     
     <container class="mod-prod-designer-app">
         
+        <!-- This needs to have a loop displaying how many options/elements there are. Example:
+        
+        <div class="mod-prod-display-area">
+            <?php foreach ($variable as $key => $value) { ?>
+                <div id="<?php echo $mod_prod_form ?>" class="mod-prod-svg-ele" plat_post = 'plat' position = '4' option ="<?php echo $mod_prod_design_code->{"plat3"}; ?>"><img src="" alt=""></div>    
+            <?php } ?>
+        </div>
+        -->
+
         <div class="mod-prod-display-area">
             <div id="plat3" class="mod-prod-svg-ele" plat_post = 'plat' position = '4' option ="<?php echo $mod_prod_design_code->{"plat3"}; ?>"><img src="" alt=""></div>
             <div id="post2" class="mod-prod-svg-ele" plat_post = 'post' position = '3' option ="<?php echo $mod_prod_design_code->{"post2"}; ?>"><img src="" alt=""></div>
